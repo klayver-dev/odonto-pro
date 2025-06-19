@@ -1,6 +1,9 @@
+/* 1. Importações de fontes e bibliotecas devem vir primeiro */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Bloco de configuração de tema (mantenha como está) */
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -43,6 +46,7 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+/* Definição de variáveis para o tema claro (mantenha como está) */
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -78,6 +82,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* Definição de variáveis para o tema escuro (mantenha como está) */
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -112,11 +117,52 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* 2. Camada de estilos base do Tailwind */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  /* Seus estilos de body foram mesclados aqui */
   body {
     @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
   }
+}
+
+/* 3. Suas classes customizadas adicionadas no final */
+.gradient-bg {
+  background: linear-gradient(135deg, #38b2ac 0%, #4299e1 100%);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card {
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: scale(1.03);
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #4299e1;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover:after {
+  width: 100%;
 }
